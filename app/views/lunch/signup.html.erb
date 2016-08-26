@@ -1,0 +1,16 @@
+<h1>Lunch#signup</h1>
+<div class="signup-form">
+  <%= form_for(@dev) do |d| %>
+    <%= d.label :name %>
+    <%= d.text_field :name %>
+
+    <%= d.label :pick %>
+    <%= d.text_field :pick %>
+
+    <%= d.label :hipchat_handle %>
+    <%= d.text_field :hipchat_handle %>
+
+    <%= d.submit "+1", class: "signup-form_submit_plusone", name: "plusone" %>
+    <%= d.submit "Coming, but not picking", class: "signup-form_submit_joining", name: "joining" %>
+  <% end %>
+</div>
