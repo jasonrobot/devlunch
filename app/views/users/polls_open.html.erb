@@ -1,1 +1,16 @@
 <h1>The polls are open!</h1>
+<div class="signup-form">
+  <%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :handle %>
+    <%= f.text_field :handle %>
+
+    <%= f.label :pick %>
+    <%= f.text_field :pick %>
+
+    <%= f.submit "+1", class: "signup-form__submit__plusone", name: "plusone" %>
+    <%= f.submit "Coming", class: "signup-form__submit__coming", name: "coming" %>
+  <% end %>
+</div>
