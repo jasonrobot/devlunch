@@ -28,16 +28,22 @@ class UsersController < ApplicationController
       @user = User.new
     end
     # switch based on whether polls are open or closed
+
     polls_open
+    # polls_closed
   end
 
 private
 
   def polls_open
+    @plusoned = User.where(plus_one: true)
+    @coming = User.where(plus_one: false)
     render 'polls_open.html.erb'
   end
 
   def polls_closed
+    @coming = User.all
+    @winner = User.first
     render 'polls_closed.html.erb'
   end
 

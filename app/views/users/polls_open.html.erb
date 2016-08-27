@@ -18,3 +18,25 @@
     <%= @user.errors.any? %>
   <% end %>
 </div>
+<div class="signed-up">
+  <div class="signed-up__plusoned">
+    <h3>+1'ed:</h3>
+    <ul class="signed-up__plusoned">
+      <% @plusoned.each do |user| %>
+        <li class="signed-up__plusoned__user">
+          <%= user.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="signed-up__coming">
+    <h3>Coming, but not voting:</h3>
+    <ul class="signed-up__coming">
+      <% @coming.each do |user| %>
+        <li class="signed-up__coming__user">
+          <%= user.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
