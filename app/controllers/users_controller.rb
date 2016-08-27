@@ -3,16 +3,31 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
-    # if params['name'] == 'plusone' do
-    #
-    # else
-    #
-    # end
+    @user = User.new user_params
+    print "User is +1'ed?: #{params[:plusone] != nil}\n"
+
+    if params[:plusone] != nil then
+      @user.plus_one = true
+    else
+      @user.plus_one = false
+    end
+
+    if @user.save then
+      redirect_to action: "lunch"
+    else
+      lunch
+    end
   end
 
   def lunch
-    @user = User.new
+    puts 'entered lunch'
+    puts @user == nil
+
+    if @user == nil || @user.errors.empty? then
+      puts 'making a new user'
+      @user = User.new
+    end
+    # switch based on whether polls are open or closed
     polls_open
   end
 
@@ -24,5 +39,9 @@ private
 
   def polls_closed
     render 'polls_closed.html.erb'
+  end
+
+  def user_params
+    return params.require(:user).permit(:name, :handle, :pick)
   end
 end

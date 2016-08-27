@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827011159) do
+ActiveRecord::Schema.define(version: 20160827015848) do
 
   create_table "devs", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160827011159) do
     t.string   "handle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "plus_one"
   end
 
 end

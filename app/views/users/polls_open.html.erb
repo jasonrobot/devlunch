@@ -1,16 +1,20 @@
 <h1>The polls are open!</h1>
 <div class="signup-form">
   <%= form_for @user do |f| %>
+    <%= render 'shared/error_messages' %>
+
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form_control" %>
 
     <%= f.label :handle %>
-    <%= f.text_field :handle %>
+    <%= f.text_field :handle, class: "form_control" %>
 
     <%= f.label :pick %>
-    <%= f.text_field :pick %>
+    <%= f.text_field :pick, class: "form_control" %>
 
     <%= f.submit "+1", class: "signup-form__submit__plusone", name: "plusone" %>
     <%= f.submit "Coming", class: "signup-form__submit__coming", name: "coming" %>
+
+    <%= @user.errors.any? %>
   <% end %>
 </div>
