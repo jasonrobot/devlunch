@@ -3,13 +3,30 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new user_params
+    puts params
+    if User.where(handle: params[:user][:handle]).any? then
+      puts "matched the handle"
+      @user = User.find_by(handle: params[:user][:handle])
+      @user.update user_params
+    elsif User.where(name: params[:user][:name]).any? then
+      puts "matched the name"
+      @user = User.find_by(name: params[:user][:name])
+      @user.update user_params
+    elsif @user == nil then
+      puts "no matches for #{params[:user][:handle]} or #{params[:user][:name]}, new user"
+      @user = User.new user_params
+    end
+
     print "User is +1'ed?: #{params[:plusone] != nil}\n"
+
+    # these shoud always default to false?
+    @user.plus_one = false
+    @user.coming = false
 
     if params[:plusone] != nil then
       @user.plus_one = true
     else
-      @user.plus_one = false
+      @user.coming = true
     end
 
     if @user.save then
@@ -43,7 +60,7 @@ private
 
   def polls_closed
     @coming = User.all
-    @winner = User.first
+    @winner = User.find(Winner.last.user_id)
     render 'polls_closed.html.erb'
   end
 
