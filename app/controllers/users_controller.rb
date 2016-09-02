@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def create
     puts params
+    # try to match on the hipchat handle, or else the name
     if User.where(handle: params[:user][:handle]).any? then
       puts "matched the handle"
       @user = User.find_by(handle: params[:user][:handle])
