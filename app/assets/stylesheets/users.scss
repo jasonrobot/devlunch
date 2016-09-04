@@ -73,3 +73,13 @@ input {
   padding-right: 15px;
   margin: auto;
 }
+
+.result__location__map {
+  margin: 15px;
+  width: auto;
+}
+
+.result__location__map iframe {
+  width: 400px;
+  height: 300px;
+}

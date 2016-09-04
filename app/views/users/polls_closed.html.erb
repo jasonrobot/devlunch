@@ -4,14 +4,19 @@
     <h2 class="result__label">The winner is:</h2>
     <div>
       <span>
-        <h1 class="result__winner">@<%= User.find(Winner.last.user_id).handle %></h1>
+        <h1 class="result__winner">@<%= @winner.handle %></h1>
       </span>
     </div>
     <h2 class="result__label">and we're going to:</h2>
     <div>
       <span>
-        <h1 class="result__location"><%= User.find(Winner.last.user_id).pick %></h1>
+        <h1 class="result__location"><%= @winner.pick %></h1>
       </span>
+      <div class="result__location__map">
+        <iframe src='//www.google.com/maps/embed/v1/directions?origin=Ontraport&destination=<%= @winner.pick %>+Santa+Barbara&key=AIzaSyANhMuRaDE6Tq2yzc-AQImdX4NuUB4G0HE'>
+        </iframe>
+      </div>
+
     </div>
   </div>
   <div class="coming">
