@@ -71,13 +71,6 @@ class UsersController < ApplicationController
       @picked.save
     end
 
-    #if the date is 12:00 on friday, we should pick
-    # time = Time.new
-    # if time.wday == 5 && time.hour >= 12 && Pick.first.done == false then
-    #   pick
-    # end
-    #if its after
-
     if Pick.first.done == true then
       polls_closed
     else
