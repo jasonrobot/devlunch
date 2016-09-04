@@ -22,12 +22,10 @@ class UsersController < ApplicationController
 
     # these shoud always default to false?
     @user.plus_one = false
-    @user.coming = false
+    @user.coming = true
 
     if params[:plusone] != nil then
       @user.plus_one = true
-    else
-      @user.coming = true
     end
 
     if @user.save then
@@ -38,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   # action to make the pick and shift the controller to 'polls_closed' mode
-  def pick
+  def _pick
     @winner = Winner.new
     id = User.where(plus_one: true).sample.id
     @winner.user_id = id
@@ -46,17 +44,20 @@ class UsersController < ApplicationController
     Pick.first.update done: true
   end
 
+  def pick
+    _pick
+    redirect_to action: "lunch"
+  end
+
   # action to reset the controller back to 'polls_open' mode
-  def reset
-    #set plus_one to false
-    #set coming to false
-    User.where(coming: true) do | user |
-      user.plus_one = false
-      user.coming = false
-      user.save
-    end
-    #set Picked.done to false
+  def _reset
+    User.update_all "coming = 'false', plus_one = 'false'"
     Pick.first.update done: false
+  end
+
+  def reset
+    _reset
+    redirect_to action: "lunch"
   end
 
   # load whichever view is appropriate
@@ -75,7 +76,7 @@ class UsersController < ApplicationController
     # if time.wday == 5 && time.hour >= 12 && Pick.first.done == false then
     #   pick
     # end
-    #if its after 
+    #if its after
 
     if Pick.first.done == true then
       polls_closed
@@ -91,8 +92,8 @@ class UsersController < ApplicationController
 private
 
   def polls_open
-    @plusoned = User.where(plus_one: true)
-    @coming = User.where(plus_one: false)
+    @plusoned = User.where(plus_one: true, coming: true)
+    @coming = User.where(plus_one: false, coming: true)
     render 'polls_open.html.erb'
   end
 

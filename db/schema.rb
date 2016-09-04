@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902181202) do
+ActiveRecord::Schema.define(version: 20160904051940) do
 
   create_table "picks", force: :cascade do |t|
     t.boolean  "done"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20160902181202) do
     t.string   "name"
     t.string   "pick"
     t.string   "handle"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "plus_one"
-    t.boolean  "coming"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "plus_one",   default: false
+    t.boolean  "coming",     default: true
   end
 
   create_table "winners", force: :cascade do |t|
