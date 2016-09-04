@@ -15,6 +15,8 @@ body {
   border-radius: 10px;
 }
 
+/* polls_open */
+
 .signup-form {
   width: 80%;
   margin: auto;
@@ -55,4 +57,19 @@ input {
 
 .signup-form__submit input {
   flex-grow: 1;
+}
+
+/* polls_closed */
+
+.result div {
+  text-align: center;
+}
+
+.result div span {
+  display: inline-block;
+  border: 3px solid;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: auto;
 }
