@@ -91,7 +91,7 @@ private
   end
 
   def polls_closed
-    @coming = User.all
+    @coming = User.where(coming: true)
     @winner = User.find(Winner.last.user_id)
     render 'polls_closed.html.erb'
   end
