@@ -9,12 +9,8 @@ class UsersController < ApplicationController
       puts "matched the handle"
       @user = User.find_by(handle: params[:user][:handle])
       @user.update user_params
-    elsif User.where(name: params[:user][:name]).any? then
-      puts "matched the name"
-      @user = User.find_by(name: params[:user][:name])
-      @user.update user_params
     elsif @user == nil then
-      puts "no matches for #{params[:user][:handle]} or #{params[:user][:name]}, new user"
+      puts "no matches for #{params[:user][:handle]}, new user"
       @user = User.new user_params
     end
 
@@ -97,6 +93,6 @@ private
   end
 
   def user_params
-    return params.require(:user).permit(:name, :handle, :pick)
+    return params.require(:user).permit(:handle, :pick)
   end
 end

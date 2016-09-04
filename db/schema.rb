@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904051940) do
+ActiveRecord::Schema.define(version: 20160904065011) do
 
   create_table "picks", force: :cascade do |t|
     t.boolean  "done"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20160904051940) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
     t.string   "pick"
     t.string   "handle"
     t.datetime "created_at",                 null: false

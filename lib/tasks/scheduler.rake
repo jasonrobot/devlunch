@@ -1,4 +1,5 @@
 task :pick => :environment do
+  time = Time.now
   if time.friday? || Rails.env.development? then
     @winner = Winner.new
     id = User.where(plus_one: true).sample.id
