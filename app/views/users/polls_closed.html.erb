@@ -1,14 +1,16 @@
 <h1>The polls are closed!!!</h1>
 <div class="winner">
   <h2>The winner is:</h2>
-  <h1><%= @winner.name %></h1>
+  <h1 class="winner__handle"><%= User.find(Winner.last.user_id).handle %></h1>
+  <h2>and we're going to:</h2>
+  <h1 class="winner__pick"><%= User.find(Winner.last.user_id).pick %></h1>
 </div>
 <div class="coming">
   <h3><%= pluralize(@coming.count, "person") %> coming:</h3>
   <ul class="coming__list">
     <% @coming.each do |user| %>
       <li class="coming__list__user">
-        <%= user.name %>
+        <%= user.handle %>
       </li>
     <% end %>
   </ul>

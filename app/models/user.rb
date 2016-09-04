@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates :name, presence: true
+  validates :handle, presence: true
   validates :pick, presence: true, if: :user_plusoned?
 
   def user_plusoned?
