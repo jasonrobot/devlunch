@@ -1,13 +1,29 @@
 <div id="container">
   <h1>The polls are closed!!!</h1>
   <div class="result">
-    <h2 class="result__label">The winner is:</h2>
-    <div>
+    <div class="names__container">
+    <div class="winner">
+      <h2 class="result__label">The winner is:</h2>
       <span>
-        <h1 class="result__winner">@<%= @winner.handle %></h1>
+        <h1 class="winner__name"><%= @winner.name %></h1>
       </span>
     </div>
+    <div class="coming">
+      <h2><%= pluralize(@coming.count, "person") %> coming:</h2>
+      <div>
+      <ul class="coming__list">
+        <% @coming.each do |user| %>
+        <li class="coming__list__user">
+          <%= user.name %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    </div>
+  </div>
+  <center>
     <h2 class="result__label">and we're going to:</h2>
+  </center>
     <div>
       <span>
         <h1 class="result__location"><%= @winner.pick %></h1>
@@ -16,17 +32,6 @@
         <iframe src='//www.google.com/maps/embed/v1/directions?origin=Ontraport&destination=<%= @winner.pick %>+Santa+Barbara&key=AIzaSyANhMuRaDE6Tq2yzc-AQImdX4NuUB4G0HE'>
         </iframe>
       </div>
-
     </div>
-  </div>
-  <div class="coming">
-    <h3><%= pluralize(@coming.count, "person") %> coming:</h3>
-    <ul class="coming__list">
-      <% @coming.each do |user| %>
-      <li class="coming__list__user">
-        <%= user.handle %>
-      </li>
-      <% end %>
-    </ul>
   </div>
 </div>

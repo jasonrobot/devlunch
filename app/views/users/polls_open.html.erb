@@ -4,8 +4,8 @@
     <%= form_for @user do |f| %>
     <%= render 'shared/error_messages' %>
 
-    <%= f.label "hipchat handle" %>
-    <%= f.text_field :handle, class: "signup-form__field" %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "signup-form__field" %>
 
     <%= f.label :pick %>
     <%= f.text_field :pick, class: "signup-form__field" %>
@@ -17,25 +17,29 @@
     <% end %>
   </div>
   <div class="signed-up">
+    <% if @plusoned.any? %>
     <div class="signed-up__plusoned">
       <h3>+1'ed:</h3>
       <ul class="signed-up__plusoned">
         <% @plusoned.each do |user| %>
         <li class="signed-up__plusoned__user">
-          <%= user.handle %>, <%= user.pick %>
+          <%= user.name %>, <%= user.pick %>
         </li>
         <% end %>
       </ul>
     </div>
+    <% end %>
+    <% if @coming.any? %>
     <div class="signed-up__coming">
       <h3>Coming, but not voting:</h3>
       <ul class="signed-up__coming">
         <% @coming.each do |user| %>
         <li class="signed-up__coming__user">
-          <%= user.handle %>
+          <%= user.name %>
         </li>
         <% end %>
       </ul>
     </div>
+    <% end %>
   </div>
 </div>

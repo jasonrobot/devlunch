@@ -6,16 +6,15 @@ class UsersController < ApplicationController
   def create
     puts params
     # try to match on the hipchat handle, or else the name
-    if User.where(handle: params[:user][:handle]).any? then
-      puts "matched the handle"
-      @user = User.find_by(handle: params[:user][:handle])
+    # if User.where(handle: params[:user][:handle]).any? then
+    #   @user = User.find_by(handle: params[:user][:handle])
+    #   @user.update user_params
+    if User.where(name: params[:user][:name]).any? then
+      @user = User.find_by(name: params[:user][:name])
       @user.update user_params
     elsif @user == nil then
-      puts "no matches for #{params[:user][:handle]}, new user"
       @user = User.new user_params
     end
-
-    print "User is +1'ed?: #{params[:plusone] != nil}\n"
 
     # these shoud always default to false?
     @user.plus_one = false
@@ -94,6 +93,6 @@ private
   end
 
   def user_params
-    return params.require(:user).permit(:handle, :pick)
+    return params.require(:user).permit(:name, :handle, :pick)
   end
 end

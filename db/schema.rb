@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20160904051940) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "name"
     t.string   "pick"
     t.string   "handle"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "plus_one",   default: false
     t.boolean  "coming",     default: true
-    t.string   "name"
   end
 
   create_table "winners", force: :cascade do |t|

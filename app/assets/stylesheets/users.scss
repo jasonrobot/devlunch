@@ -52,7 +52,6 @@ input {
 .signup-form__submit {
   display: flex;
   margin: auto;
-  background-color: #FFF;
 }
 
 .signup-form__submit input {
@@ -74,12 +73,29 @@ input {
   margin: auto;
 }
 
+.names__container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.winner {
+  width: 50%;
+}
+
+.coming {
+  width: 50%;
+}
+
 .result__location__map {
   margin: 15px;
   width: auto;
 }
 
 .result__location__map iframe {
-  width: 400px;
-  height: 300px;
+  width: 600px;
+  height: 400px;
+}
+
+.coming ul {
+  list-style: none;
 }
