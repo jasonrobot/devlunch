@@ -73,6 +73,8 @@ class UsersController < ApplicationController
       if @user == nil || @user.errors.empty? then
         puts 'making a new user'
         @user = User.new
+        puts 'in controller @user is'
+        puts @user
       end
       polls_open
     end
