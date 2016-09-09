@@ -8,4 +8,5 @@ bundler_args: --without production
 script:
   - bin/rails db:migrate
   - bin/rails db:test:prepare
+  - ls db/
   - bin/rails test
