@@ -15,6 +15,9 @@
         <% @coming.each do |user| %>
         <li class="coming__list__user">
           <%= user.name %>
+          <% if user.plus_one then %>
+            <%= '(+1\'ed)' %>
+          <% end %>
         </li>
         <% end %>
       </ul>
