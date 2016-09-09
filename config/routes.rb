@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :users
 
-#  get '/pick', to: 'users#pick'
-#  get '/reset', to: 'users#reset'
+  if Rails.env.test? then
+    get '/pick', to: 'users#pick'
+    get '/reset', to: 'users#reset'
+  end
 end
