@@ -1,3 +1,4 @@
-sqlite: &sqlite
+test:
   adapter: sqlite3
-  database: db/<%= ENV['RAILS_ENV'] %>.sqlite3
+  database: ":memory:"
+  timeout: 500
