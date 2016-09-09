@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   resources :users
 
-  get '/pick', to: 'users#pick'
-  get '/reset', to: 'users#reset'
+#  get '/pick', to: 'users#pick'
+#  get '/reset', to: 'users#reset'
 end
