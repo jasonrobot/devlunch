@@ -1,0 +1,3 @@
+sqlite: &sqlite
+  adapter: sqlite3
+  database: db/<%= ENV['RAILS_ENV'] %>.sqlite3
