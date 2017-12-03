@@ -13,23 +13,23 @@
 ActiveRecord::Schema.define(version: 20160904051940) do
 
   create_table "picks", force: :cascade do |t|
-    t.boolean  "done"
+    t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "pick"
-    t.string   "handle"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "plus_one",   default: false
-    t.boolean  "coming",     default: true
+    t.string "name"
+    t.string "pick"
+    t.string "handle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "plus_one", default: false
+    t.boolean "coming", default: true
   end
 
   create_table "winners", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
