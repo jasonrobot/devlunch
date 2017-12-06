@@ -17,14 +17,48 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert User.where(plus_one: true).count == 0
   end
 
-  #TODO test that pick doesnt alter things once its already been called
+  # Waiting
+  
+  test "can't change voting or joining" do
+    #create a user
+    #set state waiting
+    #change to voting
+    #assert it doesnt work
+    #change to joining
+    #assert it doesnt work
+  end
 
-  #TODO test that only one entry in the picks table ever exists
+  # Voting
 
-  #TODO test that only people who are plusoned get to pick
+  # Results
 
-  #TODO test that nothing happens if no one is plusoned when pick is called
+  test "cant remove voting status" do
+    #set state voting
+    #create a user
+    #change user voting
+    #set state results
+    #change user joining
+    #assert user voting
+    #change user not voting
+    #assert user voting
+  end
 
-  #TODO test that users are updated correctly
+  test "winner can change pick" do
+    #set state voting
+    #create user, set pick
+    #change user to winner
+    #set state results
+    #change pick
+    #assert new pick
+  end
+
+  test "if not voting, can change joining status" do
+    #create user
+    #set state results
+    #change user joining
+    #assert user joining
+    #change user not joining
+    #assert user not joining
+  end
 
 end

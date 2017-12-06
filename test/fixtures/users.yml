@@ -3,9 +3,12 @@
 one:
   name: MyString
   pick: MyString
-  handle: MyString
+  nickname: MyString
 
 two:
   name: MyString
   pick: MyString
-  handle: MyString
+  nickname: MyString
+
+tfix:
+  name: Poop
